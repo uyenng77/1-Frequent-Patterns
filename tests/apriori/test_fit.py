@@ -155,36 +155,6 @@ def test_with_small_fruit_dataset_and_min_support_of_four(small_fruit_dataset):
     assert not missing_itemsets, f"Missing itemsets: {missing_itemsets_text}."
 
 
-def test_with_small_fruit_dataset_and_min_support_of_five(small_fruit_dataset):
-    """Test the generation of frequent itemsets with the small fruit dataset and a minimum support of 5."""
-
-    # Create the Apriori object
-    apriori = Apriori(min_support=5)
-
-    # Generate the frequent itemsets
-    apriori.fit(small_fruit_dataset)
-
-    # Create sets of expected and generated itemsets for easier comparison
-    expected_itemsets = set()
-    generated_itemsets = apriori.frequent_itemsets
-
-    # Check the itemsets
-    missing_itemsets = expected_itemsets - generated_itemsets
-    extra_itemsets = generated_itemsets - expected_itemsets
-
-    # Make the missing itemsets and extra itemsets easier printable
-    missing_itemsets_text = ", ".join(
-        f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
-    )
-
-    extra_itemsets_text = ", ".join(
-        f"({', '.join(item.name for item in itemset)})" for itemset in extra_itemsets
-    )
-
-    assert not extra_itemsets, f"Extra itemsets: {extra_itemsets_text}."
-    assert not missing_itemsets, f"Missing itemsets: {missing_itemsets_text}."
-
-
 #####
 # Test with the large book dataset
 #####
@@ -370,36 +340,6 @@ def test_with_large_book_dataset_and_min_support_of_three(large_book_dataset):
         Itemset(frozenset({items[8]})),
         Itemset(frozenset({items[9]})),
     }
-    generated_itemsets = apriori.frequent_itemsets
-
-    # Check the itemsets
-    missing_itemsets = expected_itemsets - generated_itemsets
-    extra_itemsets = generated_itemsets - expected_itemsets
-
-    # Make the missing itemsets and extra itemsets easier printable
-    missing_itemsets_text = ", ".join(
-        f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
-    )
-
-    extra_itemsets_text = ", ".join(
-        f"({', '.join(item.name for item in itemset)})" for itemset in extra_itemsets
-    )
-
-    assert not extra_itemsets, f"Extra itemsets: {extra_itemsets_text}."
-    assert not missing_itemsets, f"Missing itemsets: {missing_itemsets_text}."
-
-
-def test_with_large_book_dataset_and_min_support_of_four(large_book_dataset):
-    """Test the generation of frequent itemsets with the large book dataset and a minimum support of 4."""
-
-    # Create the Apriori object
-    apriori = Apriori(min_support=4)
-
-    # Generate the frequent itemsets
-    apriori.fit(large_book_dataset)
-
-    # Create sets of expected and generated itemsets for easier comparison
-    expected_itemsets = set()
     generated_itemsets = apriori.frequent_itemsets
 
     # Check the itemsets

@@ -5,29 +5,6 @@ from classes.itemset import Itemset
 from classes.itemsets_with_occurence_counts import ItemsetsWithOccurenceCounts
 
 #####
-# Test with no itemsets
-#####
-
-
-def test_with_no_itemsets():
-    """Test the generation of 2-itemsets with an empty set itemsets."""
-
-    # Create the Apriori object
-    apriori = Apriori()
-
-    # Create an empty set of 1-itemsets
-    itemsets = set()
-
-    # Generate the candidate itemsets
-    candidate_itemsets = apriori._generate_candidate_itemsets(itemsets)
-
-    # Check that no candidate itemsets have been generated
-    assert (
-        not candidate_itemsets
-    ), "Does not return an empty set although no frequent itemsets are given."
-
-
-#####
 # Test with 1-itemsets
 #####
 

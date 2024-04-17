@@ -2,7 +2,7 @@ from typing import Set
 
 from classes.dataset import Dataset
 from classes.itemset import Itemset
-from classes.itemsets_with_occurence_counts import ItemsetsWithOccurenceCounts
+from classes.itemsets_with_occurrence_counts import ItemsetsWithOccurrenceCounts
 
 
 class Apriori:
@@ -34,9 +34,9 @@ class Apriori:
         """
         # TODO
 
-    def _count_occurences_of_itemsets(
+    def _count_occurrences_of_itemsets(
         self, dataset: Dataset, itemsets: Set[Itemset]
-    ) -> ItemsetsWithOccurenceCounts:
+    ) -> ItemsetsWithOccurrenceCounts:
         """
         Count the occurrences of the given itemsets in the dataset.
 
@@ -45,19 +45,19 @@ class Apriori:
         itemsets (Set[Itemset]): The itemsets for which the occurrences should be counted. The itemsets do not need to be present in the dataset.
 
         Returns:
-        ItemsetsWithOccurenceCounts: A dictionary containing the itemsets as keys and their occurrence counts as values.
+        ItemsetsWithOccurrenceCounts: A dictionary containing the itemsets as keys and their occurrence counts as values.
         """
         # TODO
 
     def _prune_itemsets_below_min_support(
         self,
-        itemsets_with_occurence_counts: ItemsetsWithOccurenceCounts,
+        itemsets_with_occurrence_counts: ItemsetsWithOccurrenceCounts,
     ) -> Set[Itemset]:
         """
         Prune itemsets that are below the minimum support threshold.
 
         Parameters:
-        itemsets_with_occurence_counts (ItemsetsWithOccurenceCounts): A dictionary containing the itemsets as keys and their occurrence counts as values.
+        itemsets_with_occurrence_counts (ItemsetsWithOccurrenceCounts): A dictionary containing the itemsets as keys and their occurrence counts as values.
 
         Returns:
         Set[Itemset]: A set containing all itemsets that are considered frequent.

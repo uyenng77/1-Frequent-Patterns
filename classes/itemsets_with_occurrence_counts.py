@@ -5,7 +5,7 @@ from collections import UserDict
 from classes.itemset import Itemset
 
 
-class ItemsetsWithOccurenceCounts(UserDict):
+class ItemsetsWithOccurrenceCounts(UserDict):
     """
     A class representing a dictionary that has itemsets as key
     and a corresponding occurrence count as value.

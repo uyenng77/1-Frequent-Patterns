@@ -2,7 +2,7 @@ from apriori import Apriori
 
 from classes.item import Item
 from classes.itemset import Itemset
-from classes.itemsets_with_occurence_counts import ItemsetsWithOccurenceCounts
+from classes.itemsets_with_occurrence_counts import ItemsetsWithOccurrenceCounts
 
 #####
 # Test with 1-itemsets
@@ -16,7 +16,7 @@ def test_with_one_itemsets_above_min_support():
     apriori = Apriori(min_support=2)
 
     # Create a set of itemsets with their occurrence counts
-    itemsets_with_occurence_counts = ItemsetsWithOccurenceCounts(
+    itemsets_with_occurrence_counts = ItemsetsWithOccurrenceCounts(
         frozenset(
             {
                 Itemset(frozenset({Item("Apple")})),
@@ -27,22 +27,22 @@ def test_with_one_itemsets_above_min_support():
         )
     )
 
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Cherry")})), 4
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Dragonfruit")})), 5
     )
 
     # Prune the itemsets
     frequent_itemsets = apriori._prune_itemsets_below_min_support(
-        itemsets_with_occurence_counts
+        itemsets_with_occurrence_counts
     )
 
     # Create the expected itemsets
@@ -57,7 +57,7 @@ def test_with_one_itemsets_above_min_support():
     missing_itemsets = expected_itemsets - frequent_itemsets
     extra_itemsets = frequent_itemsets - expected_itemsets
 
-    # Make the missing itemsets and extra itemsets easier printable
+    # Make the missing itemsets and extra itemsets easier to read
     missing_itemsets_text = ", ".join(
         f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
     )
@@ -77,7 +77,7 @@ def test_with_one_itemsets_above_and_at_min_support():
     apriori = Apriori(min_support=3)
 
     # Create a set of itemsets with their occurrence counts
-    itemsets_with_occurence_counts = ItemsetsWithOccurenceCounts(
+    itemsets_with_occurrence_counts = ItemsetsWithOccurrenceCounts(
         frozenset(
             {
                 Itemset(frozenset({Item("Apple")})),
@@ -88,22 +88,22 @@ def test_with_one_itemsets_above_and_at_min_support():
         )
     )
 
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Cherry")})), 4
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Dragonfruit")})), 5
     )
 
     # Prune the itemsets
     frequent_itemsets = apriori._prune_itemsets_below_min_support(
-        itemsets_with_occurence_counts
+        itemsets_with_occurrence_counts
     )
 
     # Create the expected itemsets
@@ -118,7 +118,7 @@ def test_with_one_itemsets_above_and_at_min_support():
     missing_itemsets = expected_itemsets - frequent_itemsets
     extra_itemsets = frequent_itemsets - expected_itemsets
 
-    # Make the missing itemsets and extra itemsets easier printable
+    # Make the missing itemsets and extra itemsets easier to read
     missing_itemsets_text = ", ".join(
         f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
     )
@@ -138,7 +138,7 @@ def test_with_one_itemsets_above_at_and_below_min_support():
     apriori = Apriori(min_support=3)
 
     # Create a set of itemsets with their occurrence counts
-    itemsets_with_occurence_counts = ItemsetsWithOccurenceCounts(
+    itemsets_with_occurrence_counts = ItemsetsWithOccurrenceCounts(
         frozenset(
             {
                 Itemset(frozenset({Item("Apple")})),
@@ -149,22 +149,22 @@ def test_with_one_itemsets_above_at_and_below_min_support():
         )
     )
 
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple")})), 2
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Cherry")})), 4
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Dragonfruit")})), 1
     )
 
     # Prune the itemsets
     frequent_itemsets = apriori._prune_itemsets_below_min_support(
-        itemsets_with_occurence_counts
+        itemsets_with_occurrence_counts
     )
 
     # Create the expected itemsets
@@ -177,7 +177,7 @@ def test_with_one_itemsets_above_at_and_below_min_support():
     missing_itemsets = expected_itemsets - frequent_itemsets
     extra_itemsets = frequent_itemsets - expected_itemsets
 
-    # Make the missing itemsets and extra itemsets easier printable
+    # Make the missing itemsets and extra itemsets easier to read
     missing_itemsets_text = ", ".join(
         f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
     )
@@ -197,7 +197,7 @@ def test_with_one_itemsets_below_min_support():
     apriori = Apriori(min_support=3)
 
     # Create a set of itemsets with their occurrence counts
-    itemsets_with_occurence_counts = ItemsetsWithOccurenceCounts(
+    itemsets_with_occurrence_counts = ItemsetsWithOccurrenceCounts(
         frozenset(
             {
                 Itemset(frozenset({Item("Apple")})),
@@ -208,22 +208,22 @@ def test_with_one_itemsets_below_min_support():
         )
     )
 
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple")})), 2
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana")})), 1
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Cherry")})), 0
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Dragonfruit")})), 2
     )
 
     # Prune the itemsets
     frequent_itemsets = apriori._prune_itemsets_below_min_support(
-        itemsets_with_occurence_counts
+        itemsets_with_occurrence_counts
     )
 
     # Create the expected itemsets
@@ -233,7 +233,7 @@ def test_with_one_itemsets_below_min_support():
     missing_itemsets = expected_itemsets - frequent_itemsets
     extra_itemsets = frequent_itemsets - expected_itemsets
 
-    # Make the missing itemsets and extra itemsets easier printable
+    # Make the missing itemsets and extra itemsets easier to read
     missing_itemsets_text = ", ".join(
         f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
     )
@@ -258,7 +258,7 @@ def test_with_two_itemsets_above_at_and_below_min_support():
     apriori = Apriori(min_support=3)
 
     # Create a set of itemsets with their occurrence counts
-    itemsets_with_occurence_counts = ItemsetsWithOccurenceCounts(
+    itemsets_with_occurrence_counts = ItemsetsWithOccurrenceCounts(
         frozenset(
             {
                 Itemset(frozenset({Item("Apple"), Item("Banana")})),
@@ -271,28 +271,28 @@ def test_with_two_itemsets_above_at_and_below_min_support():
         )
     )
 
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Banana")})), 2
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Cherry")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Dragonfruit")})), 1
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana"), Item("Cherry")})), 4
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana"), Item("Dragonfruit")})), 5
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Cherry"), Item("Dragonfruit")})), 0
     )
 
     # Prune the itemsets
     frequent_itemsets = apriori._prune_itemsets_below_min_support(
-        itemsets_with_occurence_counts
+        itemsets_with_occurrence_counts
     )
 
     # Create the expected itemsets
@@ -306,7 +306,7 @@ def test_with_two_itemsets_above_at_and_below_min_support():
     missing_itemsets = expected_itemsets - frequent_itemsets
     extra_itemsets = frequent_itemsets - expected_itemsets
 
-    # Make the missing itemsets and extra itemsets easier printable
+    # Make the missing itemsets and extra itemsets easier to read
     missing_itemsets_text = ", ".join(
         f"({', '.join(item.name for item in itemset)})" for itemset in missing_itemsets
     )
@@ -331,7 +331,7 @@ def test_with_n_itemsets_above_at_and_below_min_support():
     apriori = Apriori(min_support=3)
 
     # Create a set of itemsets with their occurrence counts
-    itemsets_with_occurence_counts = ItemsetsWithOccurenceCounts(
+    itemsets_with_occurrence_counts = ItemsetsWithOccurrenceCounts(
         frozenset(
             {
                 Itemset(frozenset({Item("Apple"), Item("Banana")})),
@@ -361,28 +361,28 @@ def test_with_n_itemsets_above_at_and_below_min_support():
         )
     )
 
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Banana")})), 2
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Cherry")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Dragonfruit")})), 1
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Banana"), Item("Cherry")})), 4
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Banana"), Item("Dragonfruit")})), 5
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Apple"), Item("Cherry"), Item("Dragonfruit")})), 0
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(frozenset({Item("Banana"), Item("Cherry"), Item("Dragonfruit")})), 3
     )
-    itemsets_with_occurence_counts.set_occurrence_count(
+    itemsets_with_occurrence_counts.set_occurrence_count(
         Itemset(
             frozenset(
                 {Item("Apple"), Item("Banana"), Item("Cherry"), Item("Dragonfruit")}
@@ -393,7 +393,7 @@ def test_with_n_itemsets_above_at_and_below_min_support():
 
     # Prune the itemsets
     frequent_itemsets = apriori._prune_itemsets_below_min_support(
-        itemsets_with_occurence_counts
+        itemsets_with_occurrence_counts
     )
 
     # Create the expected itemsets

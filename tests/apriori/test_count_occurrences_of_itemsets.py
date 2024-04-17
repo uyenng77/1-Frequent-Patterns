@@ -25,7 +25,7 @@ def test_with_small_fruit_dataset_and_a_full_list_of_1_itemsets(
     one_itemsets.add(Itemset(frozenset({Item("Dragonfruit")})))
 
     # Count the occurrences of the 1-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         small_fruit_dataset, one_itemsets
     )
 
@@ -43,12 +43,14 @@ def test_with_small_fruit_dataset_and_a_full_list_of_1_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: {item_names}, Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: {item_names}, Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -66,7 +68,7 @@ def test_with_small_fruit_dataset_and_some_missing_1_itemsets(
     one_itemsets.add(Itemset(frozenset({Item("Banana")})))
 
     # Count the occurrences of the 1-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         small_fruit_dataset, one_itemsets
     )
 
@@ -82,12 +84,14 @@ def test_with_small_fruit_dataset_and_some_missing_1_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -108,7 +112,7 @@ def test_with_small_fruit_dataset_and_an_extra_1_itemsets(
     one_itemsets.add(Itemset(frozenset({Item("Elderberry")})))
 
     # Count the occurrences of the 1-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         small_fruit_dataset, one_itemsets
     )
 
@@ -127,12 +131,14 @@ def test_with_small_fruit_dataset_and_an_extra_1_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -154,7 +160,7 @@ def test_with_small_fruit_dataset_and_a_full_list_of_2_itemsets(
     two_itemsets.add(Itemset(frozenset({Item("Cherry"), Item("Dragonfruit")})))
 
     # Count the occurrences of the 2-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         small_fruit_dataset, two_itemsets
     )
 
@@ -174,12 +180,14 @@ def test_with_small_fruit_dataset_and_a_full_list_of_2_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -210,7 +218,7 @@ def test_with_large_book_dataset_and_a_full_list_of_1_itemsets(
     one_itemsets.add(Itemset(frozenset({Item("Visions of the Lost Empire")})))
 
     # Count the occurrences of the 1-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         large_book_dataset, one_itemsets
     )
 
@@ -234,12 +242,14 @@ def test_with_large_book_dataset_and_a_full_list_of_1_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -257,7 +267,7 @@ def test_with_large_book_dataset_and_some_missing_1_itemsets(
     one_itemsets.add(Itemset(frozenset({Item("Echoes of a Forgotten Realm")})))
 
     # Count the occurrences of the 1-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         large_book_dataset, one_itemsets
     )
 
@@ -273,12 +283,14 @@ def test_with_large_book_dataset_and_some_missing_1_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -305,7 +317,7 @@ def test_with_large_book_dataset_and_an_extra_1_itemsets(
     one_itemsets.add(Itemset(frozenset({Item("Tales of the Ancient World")})))
 
     # Count the occurrences of the 1-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         large_book_dataset, one_itemsets
     )
 
@@ -330,12 +342,14 @@ def test_with_large_book_dataset_and_an_extra_1_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."
 
 
@@ -399,7 +413,7 @@ def test_with_large_book_dataset_and_a_some_2_itemsets(
     )
 
     # Count the occurrences of the 2-itemsets
-    itemsets_with_occurence_counts = apriori._count_occurences_of_itemsets(
+    itemsets_with_occurrence_counts = apriori._count_occurrences_of_itemsets(
         large_book_dataset, two_itemsets
     )
 
@@ -449,10 +463,12 @@ def test_with_large_book_dataset_and_a_some_2_itemsets(
 
         # Check the occurrence count of the current itemset
         assert (
-            itemsets_with_occurence_counts.get_occurrence_count(itemset)
+            itemsets_with_occurrence_counts.get_occurrence_count(itemset)
             == expected_occurrences[itemset]
-        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Actual: {itemsets_with_occurence_counts.get_occurrence_count(itemset)}."
+        ), f"Itemset: ({item_names}), Expected: {expected_occurrences[itemset]}, Returned: {itemsets_with_occurrence_counts.get_occurrence_count(itemset)}."
 
-    # Check that itemsets_with_occurence_counts does not contain any other itemsets
-    extra_itemsets = itemsets_with_occurence_counts.keys() - expected_occurrences.keys()
+    # Check that itemsets_with_occurrence_counts does not contain any other itemsets
+    extra_itemsets = (
+        itemsets_with_occurrence_counts.keys() - expected_occurrences.keys()
+    )
     assert not extra_itemsets, f"Extra itemsets: {extra_itemsets}."

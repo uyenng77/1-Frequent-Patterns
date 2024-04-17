@@ -2,7 +2,7 @@ from apriori import Apriori
 
 from classes.item import Item
 from classes.itemset import Itemset
-from classes.itemsets_with_occurence_counts import ItemsetsWithOccurenceCounts
+from classes.itemsets_with_occurrence_counts import ItemsetsWithOccurrenceCounts
 
 #####
 # Test with 1-itemsets
